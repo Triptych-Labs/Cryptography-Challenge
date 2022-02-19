@@ -69,9 +69,7 @@ def encode(message: str, encodings: typing.List):
 
     history.reverse()
     ciphers = []
-    message_deciphered = bytes()
     for encoding in history:
-        message_deciphered = encoding[0](encoding[1:])
         ciphers.append(encoding[len(encoding) - 1])
 
     cipher_suite = collections.Counter(ciphers)
@@ -80,7 +78,7 @@ def encode(message: str, encodings: typing.List):
         "cipherOrder": " -> ".join(ciphers),
         "cipherSuite": dict(cipher_suite),
         "messageCipher": list(bytearray(message_cipher)),
-        "message": str(message_deciphered),
+        "message": str(message),
         "messageHash": str(hash_message(message_cipher)),
     }
 
