@@ -77,6 +77,7 @@ def encode(message: str, encodings: typing.List):
     cipher_suite = collections.Counter(ciphers)
 
     obj = {
+        "cipherOrder": " -> ".join(ciphers),
         "cipherSuite": dict(cipher_suite),
         "messageCipher": list(bytearray(message_cipher)),
         "message": str(message_deciphered),
